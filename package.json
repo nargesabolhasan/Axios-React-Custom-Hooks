@@ -25,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server-users": "json-server --watch users.json --port 4000"
+    "server-users": "json-server --watch users-api/users.json --port 4000"
   },
   "eslintConfig": {
     "extends": [
