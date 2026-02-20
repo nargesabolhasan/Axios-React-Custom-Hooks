@@ -1,7 +1,7 @@
 image: docker:24
 
 services:
-  - docker:24-dinddocker
+  - docker:24-dind
 
 variables:
   DOCKER_DRIVER: overlay2
@@ -26,4 +26,4 @@ push:
     - docker push $IMAGE_NAME:$CI_COMMIT_SHORT_SHA
     - docker push $IMAGE_NAME:latest
   only:
-    - main
+    - master

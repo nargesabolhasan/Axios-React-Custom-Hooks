@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchProducts();
+    fetchProducts().then();
   }, []);
 
   return (
