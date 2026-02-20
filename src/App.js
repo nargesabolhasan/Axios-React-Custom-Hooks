@@ -25,7 +25,7 @@ import withPrivateRoute from "./components/HOC/privateRouteHOC";
 
 function App() {
   const location = useLocation();
-  const isLoginSignin =
+  const isAuthRoute =
     location.pathname.includes(LOGIN_ROUTE) ||
     location.pathname.includes(SIGNIN_ROUTE);
 
@@ -38,7 +38,7 @@ function App() {
         justifyContent: "space-between",
       }}
     >
-      {!isLoginSignin && <HeaderComponent />}
+      {!isAuthRoute && <HeaderComponent />}
       <div className="pt-7 w-full">
         <Routes>
           <Route path={HOME_ROUTE} element={<Home />} />
