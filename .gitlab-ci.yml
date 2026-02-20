@@ -1,0 +1,29 @@
+image: docker:24
+
+services:
+  - docker:24-dinddocker
+
+variables:
+  DOCKER_DRIVER: overlay2
+  IMAGE_NAME: $DOCKERHUB_IMAGE
+
+stages:
+  - build
+  - push
+
+before_script:
+  - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+
+build:
+  stage: build
+  script:
+    - docker build -t $IMAGE_NAME:$CI_COMMIT_SHORT_SHA .
+    - docker tag $IMAGE_NAME:$CI_COMMIT_SHORT_SHA $IMAGE_NAME:latest
+
+push:
+  stage: push
+  script:
+    - docker push $IMAGE_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_NAME:latest
+  only:
+    - main
